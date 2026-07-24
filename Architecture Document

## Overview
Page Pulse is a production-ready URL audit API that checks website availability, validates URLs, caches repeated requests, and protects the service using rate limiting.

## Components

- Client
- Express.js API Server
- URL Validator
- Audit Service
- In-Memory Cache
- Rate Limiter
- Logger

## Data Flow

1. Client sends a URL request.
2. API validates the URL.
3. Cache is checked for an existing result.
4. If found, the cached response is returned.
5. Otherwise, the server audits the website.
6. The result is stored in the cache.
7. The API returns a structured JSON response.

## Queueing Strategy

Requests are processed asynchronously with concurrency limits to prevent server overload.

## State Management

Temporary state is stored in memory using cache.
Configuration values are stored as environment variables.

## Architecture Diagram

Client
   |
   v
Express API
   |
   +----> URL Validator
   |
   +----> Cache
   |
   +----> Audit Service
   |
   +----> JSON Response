@@ -1,0 +1,48 @@
+# Architecture Document
+
+## Overview
+Page Pulse is a production-ready URL audit API that checks website availability, validates URLs, caches repeated requests, and protects the service using rate limiting.
+
+## Components
+
+- Client
+- Express.js API Server
+- URL Validator
+- Audit Service
+- In-Memory Cache
+- Rate Limiter
+- Logger
+
+## Data Flow
+
+1. Client sends a URL request.
+2. API validates the URL.
+3. Cache is checked for an existing result.
+4. If found, the cached response is returned.
+5. Otherwise, the server audits the website.
+6. The result is stored in the cache.
+7. The API returns a structured JSON response.
+
+## Queueing Strategy
+
+Requests are processed asynchronously with concurrency limits to prevent server overload.
+
+## State Management
+
+Temporary state is stored in memory using cache.
+Configuration values are stored as environment variables.
+
+## Architecture Diagram
+
+Client
+   |
+   v
+Express API
+   |
+   +----> URL Validator
+   |
+   +----> Cache
+   |
+   +----> Audit Service
+   |
+   +----> JSON Response
