@@ -1,1 +1,2 @@
-ARCHITECTURE.md
+
+# page-pulse-api
