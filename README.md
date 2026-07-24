@@ -1,2 +1,1 @@
-# page-pulse-api
-URL Audit Service Assignment
+ARCHITECTURE.md
